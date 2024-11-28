@@ -7,18 +7,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class mis_ItemMaster : System.Web.UI.Page
+public partial class mis_SanghMaster : System.Web.UI.Page
 {
     string Connstr = ConfigurationManager.ConnectionStrings["Conndb"].ConnectionString;
     Code obj = new Code();
-
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            obj.FillGrid(grddata, "usp_GetItems", Connstr, divAlert);
+            obj.FillGrid(grddata, "Usp_GetAllDugdhSanghs", Connstr, divAlert);
         }
     }
+
 
     protected void BtnSave_Click(object sender, EventArgs e)
     {
@@ -29,31 +29,27 @@ public partial class mis_ItemMaster : System.Web.UI.Page
                 DataSet ds = new DataSet();
                 if (BtnSave.Text == "Save")
                 {
-                    ds = obj.ByProcedure("usp_AddItem", new[] {
-                        "ItemName",
-                        "ItemCategory",
-                        "ItemCode",
+                    ds = obj.ByProcedure("usp_AddSangh", new[] {
+                        "SanghName",
+                        "SanghCode",
                         "IsActive",
                         "CreatedByIp"}, new[] {
-                        TxtItem.Text,
-                        DdlItemCat.SelectedValue ,
-                        TxtItemCode.Text,
+                        TxtSangh.Text,                         
+                        TxtSanghCode.Text,
                         ((cbIsActive.Checked)?"1":"0" )
                         ,Request.ServerVariables["REMOTE_ADDR"].ToString() }, Connstr);
                 }
                 else if (BtnSave.Text == "Update")
                 {
-                    ds = obj.ByProcedure("usp_UpdateItem", new[] {
-                    "ItemID",
-                    "ItemName",
-                    "ItemCategory",
-                    "ItemCode",
+                    ds = obj.ByProcedure("usp_UpdateSangh", new[] {
+                    "ID",
+                    "SanghName",               
+                    "SanghCode",
                     "IsActive"
                     ,"UpdatedByIp"}, new[] {
-                    ViewState["ItemID"].ToString(),
-                    TxtItem.Text,
-                    DdlItemCat.SelectedValue ,
-                    TxtItemCode.Text,
+                    ViewState["ID"].ToString(),
+                    TxtSangh.Text,                     
+                    TxtSanghCode.Text,
                     ((cbIsActive.Checked)?"1":"0" )
                     ,Request.ServerVariables["REMOTE_ADDR"].ToString() }, Connstr);
 
@@ -66,11 +62,12 @@ public partial class mis_ItemMaster : System.Web.UI.Page
                         if (Convert.ToBoolean(ds.Tables[0].Rows[0]["status"]))
                         {
                             obj.alertmsg(Convert.ToString(ds.Tables[0].Rows[0]["msg"]), divAlert, "bg-success");
-                            DdlItemCat.ClearSelection();
-                            cbIsActive.Checked=true;                           
-                            TxtItem.Text = "";
-                            TxtItemCode.Text = "";                           
-                            obj.FillGrid(grddata, "usp_GetItems", Connstr, divAlert);
+
+                            cbIsActive.Checked = true;
+                            TxtSangh.Text = "";
+                            TxtSanghCode.Text = "";
+                            TxtSanghCode.Enabled = false;
+                            obj.FillGrid(grddata, "Usp_GetAllDugdhSanghs", Connstr, divAlert);
                             BtnSave.Text = "Save";
                         }
                         else
@@ -101,33 +98,31 @@ public partial class mis_ItemMaster : System.Web.UI.Page
             if (e.CommandName == "EditData")
             {
                 GridViewRow row = (GridViewRow)((LinkButton)e.CommandSource).NamingContainer;
-                Label lblItemName = (Label)row.FindControl("lblItemName");
-                Label lblItemCode = (Label)row.FindControl("lblItemCode");
-                Label lblItemCategory = (Label)row.FindControl("lblItemCategory");
+                Label lblSanghName = (Label)row.FindControl("lblSanghName");
+                Label lblSanghCode = (Label)row.FindControl("lblSanghCode");
                 Label lblIsActive = (Label)row.FindControl("lblIsActive");
+                TxtSangh.Text = lblSanghName.Text;
 
-
-                TxtItem.Text = lblItemName.Text;
-                DdlItemCat.ClearSelection();
-                DdlItemCat.Items.FindByValue(lblItemCategory.Text).Selected = true;
-                TxtItemCode.Text = lblItemCode.Text;
+                TxtSanghCode.Text = lblSanghCode.Text;
+                
+                TxtSanghCode.Enabled = false;
                 cbIsActive.Checked = Convert.ToBoolean(lblIsActive.Text);
 
 
 
-                ViewState["ItemID"] = e.CommandArgument;
+                ViewState["ID"] = e.CommandArgument;
                 BtnSave.Text = "Update";
             }
             else if (e.CommandName == "DeleteData")
             {
 
-                DataSet ds = obj.ByProcedure("usp_DeleteItem", new[] { "ItemID", "DeletedByIp" }, new[] { e.CommandArgument.ToString(), Request.ServerVariables["REMOTE_ADDR"] }, Connstr);
+                DataSet ds = obj.ByProcedure("usp_DeleteSangh", new[] { "ID", "DeletedByIp" }, new[] { e.CommandArgument.ToString(), Request.ServerVariables["REMOTE_ADDR"] }, Connstr);
                 if (ds.Tables.Count > 0)
                 {
                     if (Convert.ToBoolean(ds.Tables[0].Rows[0]["status"]))
                     {
                         obj.alertmsg(Convert.ToString(ds.Tables[0].Rows[0]["msg"]), divAlert, "bg-success");
-                        obj.FillGrid(grddata, "usp_GetItems", Connstr, divAlert);
+                        obj.FillGrid(grddata, "Usp_GetAllDugdhSanghs", Connstr, divAlert);
                     }
                     else
                     {
