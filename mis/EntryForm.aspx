@@ -137,7 +137,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label class="text-dark text-lg">Enter Last Year Target  <span style="color: red">*</span></label>
+                        <label class="text-dark text-lg">Enter Last Year Target   <span style="color: red">*</span></label>
 
                         <asp:RequiredFieldValidator ErrorMessage="Last Year Target Not Filled" ControlToValidate="TxtLYTarget" ForeColor="Red" Display="None" runat="server" ValidationGroup="Save" Font-Size="Small" SetFocusOnError="true" />
 
@@ -170,7 +170,7 @@
                     <div class="table-responsive ">
 
 
-                        <asp:GridView runat="server" ID="grddata" AutoGenerateColumns="false" CssClass="table" OnRowCommand="grddata_RowCommand" HeaderStyle-CssClass="text-dark">
+                        <asp:GridView runat="server" ID="grddata" AutoGenerateColumns="false" CssClass="table text-wrap" OnRowCommand="grddata_RowCommand" HeaderStyle-CssClass="text-dark">
                             <Columns>
                                 <asp:TemplateField HeaderText="Sr. No">
                                     <ItemTemplate>
@@ -227,7 +227,7 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
-                                <asp:TemplateField HeaderText="Last Year Achievement">
+                                <asp:TemplateField HeaderText="Last Year Target ">
                                     <ItemTemplate>
                                         <asp:Label runat="server" ID="lblLYTarget" Text='<%# Eval("LYTarget").ToString() %>'></asp:Label>
                                     </ItemTemplate>
@@ -237,6 +237,12 @@
                                         <asp:Label runat="server" ID="lblGrowth" Text='<%# Eval("Growth").ToString() %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                                      
+                               <%-- <asp:TemplateField HeaderText="Growth2 %">
+                                    <ItemTemplate>
+                                        <asp:Label runat="server" ID="lblGrowth" Text='<%# Eval("Growth2").ToString() %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>--%>
 
 
                                 <asp:TemplateField HeaderText="Action">

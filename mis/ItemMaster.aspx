@@ -44,9 +44,9 @@
                     <div class="form-group">
                         <label class="text-dark text-lg">Enter Item Code  <span style="color: red">*</span></label>
 
-                        <asp:RequiredFieldValidator ErrorMessage="Item Name Not Filled" ControlToValidate="TxtItemCode" ForeColor="Red" Display="None" runat="server" ValidationGroup="Save" Font-Size="Small" SetFocusOnError="true" />
+                        <asp:RequiredFieldValidator ErrorMessage="Item Code Not Filled" ControlToValidate="TxtItemCode" ForeColor="Red" Display="None" runat="server" ValidationGroup="Save" Font-Size="Small" SetFocusOnError="true" />
 
-                        <asp:TextBox ID="TxtItemCode" runat="server" autocomplete="off" class="form-control" placeholder="Item Code "></asp:TextBox>
+                        <asp:TextBox ID="TxtItemCode" runat="server" autocomplete="off" CssClass="form-control" placeholder="Item Code "></asp:TextBox>
 
 
                     </div>

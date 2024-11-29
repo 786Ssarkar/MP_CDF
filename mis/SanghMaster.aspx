@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <label class="text-dark text-lg">Enter Sangh Code  <span style="color: red">*</span></label>
 
-                        <asp:RequiredFieldValidator ErrorMessage="Sangh Name Not Filled" ControlToValidate="TxtSanghCode" ForeColor="Red" Display="None" runat="server"  ValidationGroup="Save" Font-Size="Small" SetFocusOnError="true" />
+                        <asp:RequiredFieldValidator ErrorMessage="Sangh Code Not Filled" ControlToValidate="TxtSanghCode" ForeColor="Red" Display="None" runat="server"  ValidationGroup="Save" Font-Size="Small" SetFocusOnError="true" />
 
                         <asp:TextBox ID="TxtSanghCode" runat="server" autocomplete="off" CssClass="form-control"  placeholder="Sangh Code "></asp:TextBox>
 

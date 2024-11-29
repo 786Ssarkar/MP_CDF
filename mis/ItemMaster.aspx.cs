@@ -14,6 +14,7 @@ public partial class mis_ItemMaster : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        divAlert.InnerHtml = "";
         if (!IsPostBack)
         {
             obj.FillGrid(grddata, "usp_GetItems", Connstr, divAlert);

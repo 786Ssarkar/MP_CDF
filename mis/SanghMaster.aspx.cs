@@ -13,6 +13,7 @@ public partial class mis_SanghMaster : System.Web.UI.Page
     Code obj = new Code();
     protected void Page_Load(object sender, EventArgs e)
     {
+        divAlert.InnerHtml = "";
         if (!IsPostBack)
         {
             obj.FillGrid(grddata, "Usp_GetAllDugdhSanghs", Connstr, divAlert);

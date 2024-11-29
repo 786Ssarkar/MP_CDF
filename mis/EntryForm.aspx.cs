@@ -18,6 +18,7 @@ public partial class mis_EntryForm : System.Web.UI.Page
     Code obj = new Code();
     protected void Page_Load(object sender, EventArgs e)
     {
+        divAlert.InnerHtml = "";
         if (!IsPostBack)
         {
             Fillddl(DdlProduct, "GetItemsByCategory");
