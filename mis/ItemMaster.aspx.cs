@@ -69,7 +69,8 @@ public partial class mis_ItemMaster : System.Web.UI.Page
                             DdlItemCat.ClearSelection();
                             cbIsActive.Checked=true;                           
                             TxtItem.Text = "";
-                            TxtItemCode.Text = "";                           
+                            TxtItemCode.Text = "";
+                            TxtItemCode.Enabled = true;
                             obj.FillGrid(grddata, "usp_GetItems", Connstr, divAlert);
                             BtnSave.Text = "Save";
                         }
@@ -111,6 +112,7 @@ public partial class mis_ItemMaster : System.Web.UI.Page
                 DdlItemCat.ClearSelection();
                 DdlItemCat.Items.FindByValue(lblItemCategory.Text).Selected = true;
                 TxtItemCode.Text = lblItemCode.Text;
+                TxtItemCode.Enabled = false;
                 cbIsActive.Checked = Convert.ToBoolean(lblIsActive.Text);
 
 

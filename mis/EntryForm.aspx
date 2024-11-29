@@ -18,7 +18,7 @@
                             Select Unit  <span style="color: red">*</span></label>
                         <asp:RequiredFieldValidator ErrorMessage="Unit Not Selected" ControlToValidate="DdlUnit" ForeColor="Red" Display="None" runat="server" ValidationGroup="Save" Font-Size="Small" SetFocusOnError="true" />
 
-                        <asp:DropDownList runat="server" ID="DdlUnit" CssClass="form-control" autocomplete="off">
+                        <asp:DropDownList runat="server" ID="DdlUnit" CssClass="form-control select2" autocomplete="off">
                             <asp:ListItem Text="--Select--" Value="" />
 
                         </asp:DropDownList>
@@ -31,7 +31,7 @@
                             Select Year  <span style="color: red">*</span></label>
                         <asp:RequiredFieldValidator ErrorMessage="Year Not Selected" ControlToValidate="DdlYear" ForeColor="Red" Display="None" runat="server" ValidationGroup="Save" Font-Size="Small" SetFocusOnError="true" />
 
-                        <asp:DropDownList runat="server" ID="DdlYear" CssClass="form-control" autocomplete="off">
+                        <asp:DropDownList runat="server" ID="DdlYear" CssClass="form-select select2" autocomplete="off">
                             <asp:ListItem Text="--Select--" Value="" />
                             <asp:ListItem Text="2010-11" Value="2010-11" />
                             <asp:ListItem Text="2011-12" Value="2011-12" />
@@ -59,7 +59,7 @@
                             Select Month  <span style="color: red">*</span></label>
                         <asp:RequiredFieldValidator ErrorMessage="Month Not Selected" ControlToValidate="DdlMonth" ForeColor="Red" Display="None" runat="server" ValidationGroup="Save" Font-Size="Small" SetFocusOnError="true" />
 
-                        <asp:DropDownList runat="server" ID="DdlMonth" CssClass="form-control" autocomplete="off">
+                        <asp:DropDownList runat="server" ID="DdlMonth" CssClass="form-control select2" autocomplete="off">
                             <asp:ListItem Text="--Select--" Value="" />
                             <asp:ListItem Text="January" Value="1" />
                             <asp:ListItem Text="February" Value="2" />
@@ -83,7 +83,7 @@
                             Select Product  <span style="color: red">*</span></label>
                         <asp:RequiredFieldValidator ErrorMessage="Product Not Selected" ControlToValidate="DdlProduct" ForeColor="Red" Display="None" runat="server" ValidationGroup="Save" Font-Size="Small" SetFocusOnError="true" />
 
-                        <asp:DropDownList runat="server" ID="DdlProduct" CssClass="form-control" autocomplete="off">
+                        <asp:DropDownList runat="server" ID="DdlProduct" CssClass="form-control select2" autocomplete="off">
                             <asp:ListItem Text="--Select--" Value="" />
 
                         </asp:DropDownList>
