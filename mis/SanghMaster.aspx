@@ -11,7 +11,7 @@
  
         </div>
         <div class="card-body">
-            <div class="row">
+            <div class="row align-items-end">
 
 
                 <div class="col-md-3">
